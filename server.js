@@ -8,6 +8,8 @@ const playerRecord = {
 };
 const app = express();
 
+app.use(express.static(__dirname + '/public'));
+
 app.use(express.json());
 
 // Add up the total health of all the robots
@@ -37,7 +39,7 @@ const calculateHealthAfterAttack = ({ playerDuo, compDuo }) => {
 
 app.get("/api/robots", (req, res) => {
   try {
-    res.status(200).send(botsArr);
+    res.status(200).send(bots);
   } catch (error) {
     console.error("ERROR GETTING BOTS", error);
     res.sendStatus(400);
